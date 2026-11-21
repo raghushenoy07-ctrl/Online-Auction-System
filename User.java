@@ -25,4 +25,15 @@ public class User {
     public String getUsername() {
         return username;
     }
+
+    // Checks whether the entered login credentials are correct
+    public boolean checkLogin(String username, String password) {
+
+        // Compares entered username and password with stored credentials
+        if (this.username.equals(username) && this.password.equals(password)) {
+            return true; // Returns true if both match
+        }
+
+        return false; // Returns false if credentials do not match
+    }
 }
