@@ -94,4 +94,35 @@ public class Auction {
     public void closeAuction() {
         active = false;
     }
+
+    // Displays complete auction information
+    public void showDetails() {
+        System.out.println("\nAuction ID: " + id);
+        System.out.println("Item Name: " + itemName);
+        System.out.println("Seller: " + sellerName);
+        System.out.println("Current Price: " + price);
+        System.out.println("Highest Bidder: " + highestBidder);
+
+        // Displays the current auction status
+        if (active == true) {
+            System.out.println("Status: Active");
+        } else {
+            System.out.println("Status: Closed");
+        }
+
+        // Displays the complete bidding history
+        System.out.println("Bid History:");
+
+        // Checks whether any bids have been placed
+        if (bids.size() == 0) {
+            System.out.println("No bids placed.");
+        } else {
+
+            // Iterates through all bids and displays bidder and amount
+            for (int i = 0; i < bids.size(); i++) {
+                System.out.println(bids.get(i).getBidderName() + " - "
+                        + bids.get(i).getAmount());
+            }
+        }
+    }
 }
