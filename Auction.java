@@ -63,4 +63,35 @@ public class Auction {
     public boolean isActive() {
         return active;
     }
+
+    // Method to place a new bid
+    public void placeBid(String bidderName, double amount) {
+
+        // Checks whether the auction is closed
+        if (active == false) {
+            System.out.println("Auction is closed.");
+
+        // Prevents the seller from bidding on their own item
+        } else if (bidderName.equals(sellerName)) {
+            System.out.println("Seller cannot bid on own item.");
+
+        // Checks whether the bid is higher than the current price
+        } else if (amount <= price) {
+            System.out.println("Bid must be higher than " + price);
+
+        } else {
+            price = amount; // Updates the current highest price
+            highestBidder = bidderName; // Updates the highest bidder
+
+            // Adds the new bid to bid history
+            bids.add(new Bid(bidderName, amount));
+
+            System.out.println("Bid placed successfully.");
+        }
+    }
+
+    // Closes the auction by changing its status
+    public void closeAuction() {
+        active = false;
+    }
 }
